@@ -6,7 +6,7 @@ import Levenshtein
 class English():
 
 	def __init__(self):
-		dictionary = enchant.Dict("en_US")
+		self.dictionary = enchant.Dict("en_US")
 
 	def ifEnglishWord(theDict, word):
 		try:
@@ -42,7 +42,7 @@ def wordSuggestion(theDict, word1):
 
 
 #just a test for levenshtein
-def levenshteinTest()
+def levenshteinTest():
 	print("Test")
 
 	listOfWords = ["good",
