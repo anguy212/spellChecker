@@ -14,12 +14,13 @@ def getMisspelledWords(theDict, textBlock):
 	#create missSpelled list
 	misspelledList = []
 	#token the block of text and store into list
-	tokenizedList = nltk.word_tokenize(textBlock)
-
+	tokenizedList = re.findall("[A-Z]{2,}(?![a-z])|[A-Z][a-z]+(?=[A-Z])|[\'\w\-]+",textBlock)
+	print("tokenized list: "),
+	print(tokenizedList)
 	#check list for misspelled words
 	for word_tokenize in tokenizedList:
 		token = re.split("-", word_tokenize)
-		
+		print("token: ", token)
 
 		#type checking
 		if type(token) == type(list()):
@@ -99,7 +100,7 @@ def getMisspelledWords_test():
 
 	print("checking Don't")
 	print(ifEnglishWord(theDict, "hadn't"))
-	print(ifEnglishWord(theDict, "ishmael"))
+	print(ifEnglishWord(theDict, "Ishmael"))
 		
 		
 

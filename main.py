@@ -1,6 +1,7 @@
 
 from SpellChecker import *
 from enchant_and_levenshtein import *
+from LCSrecommendations import *
 def main():
 
 	#get sentence
@@ -24,18 +25,22 @@ def main():
 		#run LCsrec on each misspelled word
 		misspelledDict = {}
 		for eachMisspelled in misspelledList:
-			recommendedList = returnLCSrecs(mispelled):
-			recommendedDict = {}
+			recommendedList = returnLCSrecs(eachMisspelled)
+			recommendDict = {}
 			for eachRecommended in recommendedList:
-				recommendDict[eachRecommended] = levenshteinCheck(eachRecommended, eachMisspelled)
 
-			misspelledDict[eachMisspelled] = sorted(recommendDict, key=recommendDict.get, reverse = true)[0:2]
+				recommendDict[str(eachRecommended)] = levenshteinCheck(str(eachRecommended), eachMisspelled)
+
+
+			misspelledDict[eachMisspelled] = sorted(recommendDict, key=recommendDict.get, reverse = True)[0:3]
 			
 
 		for eachKey in misspelledDict.keys():
 			print(eachKey),
 			print(": "),
+
 			print(misspelledDict[eachKey])
+
 		#check Levenshtein score on each suggest word
 
 		#output top 3 for each word
