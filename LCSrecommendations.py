@@ -4,7 +4,7 @@
 Created on Sun Apr 14 18:27:10 2019
 
 @author: rocioroman
-sources:https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+source:https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
 """
 from nltk.corpus import words
 
