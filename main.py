@@ -10,6 +10,17 @@ def main():
 	#run LCSrec on each misspelled word
 	#check Levenshtein score on each suggested word
 	#output top 3
+	getSpellChecked()
+
+		#check Levenshtein score on each suggest word
+
+		#output top 3 for each word
+
+
+
+
+def getSpellChecked():
+
 	theDict = English().dictionary
 
 	while True:
@@ -41,16 +52,7 @@ def main():
 
 			print(misspelledDict[eachKey])
 
-		#check Levenshtein score on each suggest word
-
-		#output top 3 for each word
-
-
-
-
-
-
-
+	return 0
 
 if __name__ == "__main__":
 	main()
