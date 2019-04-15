@@ -10,7 +10,14 @@ def main():
 	#run LCSrec on each misspelled word
 	#check Levenshtein score on each suggested word
 	#output top 3
-	getSpellChecked()
+	theDict = English().dictionary
+	while True:
+		#get input
+		print(": ")
+		textBlock = raw_input()
+
+		
+		getSpellChecked(theDict, textBlock)
 
 		#check Levenshtein score on each suggest word
 
@@ -19,38 +26,32 @@ def main():
 
 
 
-def getSpellChecked():
-
-	theDict = English().dictionary
-
-	while True:
-		#get input
-		print(": ")
-		textBlock = raw_input()
-
-		#tokenize sentence and put in list
-		#find misspelled words and put into list
-		misspelledList = getMisspelledWords(theDict, textBlock)
+def getSpellChecked(theDict, textBlock):
 
 
-		#run LCsrec on each misspelled word
-		misspelledDict = {}
-		for eachMisspelled in misspelledList:
-			recommendedList = returnLCSrecs(eachMisspelled)
-			recommendDict = {}
-			for eachRecommended in recommendedList:
+	#tokenize sentence and put in list
+	#find misspelled words and put into list
+	misspelledList = getMisspelledWords(theDict, textBlock)
 
-				recommendDict[str(eachRecommended)] = levenshteinCheck(str(eachRecommended), eachMisspelled)
+	print("...\n\n\n\n")
+	#run LCsrec on each misspelled word
+	misspelledDict = {}
+	for eachMisspelled in misspelledList:
+		recommendedList = returnLCSrecs(eachMisspelled)
+		recommendDict = {}
+		for eachRecommended in recommendedList:
+
+			recommendDict[str(eachRecommended)] = levenshteinCheck(str(eachRecommended), eachMisspelled)
 
 
-			misspelledDict[eachMisspelled] = sorted(recommendDict, key=recommendDict.get, reverse = True)[0:3]
-			
+		misspelledDict[eachMisspelled] = sorted(recommendDict, key=recommendDict.get, reverse = True)[0:3]
+		
 
-		for eachKey in misspelledDict.keys():
-			print(eachKey),
-			print(": "),
+	for eachKey in misspelledDict.keys():
+		print(eachKey),
+		print(": "),
 
-			print(misspelledDict[eachKey])
+		print(misspelledDict[eachKey])
 
 	return 0
 
